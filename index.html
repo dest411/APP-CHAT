@@ -77,6 +77,8 @@
 				break;
 		}
 
+        
+
 		$(function() {
 			var socket = io.connect();
 			var $form = $("#messForm"); 
@@ -84,10 +86,17 @@
 			var $textarea = $("#message"); 
 			var $all_messages = $("#all_mess"); 
 
+
+
 			$form.submit(function(event) {
-				event.preventDefault();
-				socket.emit('send mess', {mess: $textarea.val(), name: $name.val(), className: alertClass});
-				$textarea.val('');
+				event.preventDefault(); //не обнв
+                if(message == "" || name == ""){
+                    alert("Введіть ім'я та повідомлення")
+                }else{
+                    socket.emit('send mess', {mess: $textarea.val(), name: $name.val(), className: alertClass});
+				    $textarea.val('');  
+                }
+				
 			});
 
 			socket.on('add mess', function(data) {
@@ -98,3 +107,4 @@
 	</script>
 </body>
 </html>
+  
