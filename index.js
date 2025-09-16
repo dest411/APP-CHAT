@@ -13,12 +13,12 @@ app.get('/', function(request, respons) {
 connections = [];
 
 io.on('connection', function(socket) {
-    console.log("Успешное соединение");
+    console.log("Успішне підключення");
     connections.push(socket);
 
     socket.on('disconnect', function(data) {
         connections.splice(connections.indexOf(socket), 1);
-        console.log("Отключились");
+        console.log("Відключились");
     });
 
     socket.on('send mess', function(data) {
