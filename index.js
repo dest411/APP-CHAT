@@ -4,7 +4,7 @@ var server = require('http').createServer(app);
 var { Server } = require('socket.io');
 var io = new Server(server);
 
-server.listen(3000);
+server.listen(3000, '0.0.0.0'); //192.168.0.19
 
 app.get('/', function(request, respons) {
     respons.sendFile(__dirname + '/index.html');
