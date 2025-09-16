@@ -90,13 +90,13 @@
 
 			$form.submit(function(event) {
 				event.preventDefault(); //не обнв
-                if(message == "" || name == ""){
+                if($textarea.val().trim() == "" || $name.val().trim == ""){
                     alert("Введіть ім'я та повідомлення")
                 }else{
                     socket.emit('send mess', {mess: $textarea.val(), name: $name.val(), className: alertClass});
-				    $textarea.val('');  
                 }
-				
+				$textarea.val('');  
+
 			});
 
 			socket.on('add mess', function(data) {
