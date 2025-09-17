@@ -83,6 +83,7 @@
 			var $name = $("#name"); 
 			var $textarea = $("#message"); 
 			var $all_messages = $("#all_mess"); 
+			var audio = newAudio('/sound.mp3')
 
 
 
@@ -98,6 +99,8 @@
 			});
 
 			socket.on('add mess', function(data) {
+				audio.currentTime = 0;
+    			audio.play();
 				$all_messages.append("<div class='alert alert-" + data.className + "'><b>" + data.name + "</b>: " + data.mess + "</div>");
 			});
 
